@@ -33,16 +33,16 @@ def main():
     Field_List = ['$Threat', '$EquipName', '$Voltage', '$LD', '$RD', '$GC', '$IT', '$Energy', '$AFAB', '$WD', '$CL', '$FS', '$Date']
     Field_Values = [args.Threat, args.EquipName, args.Voltage, args.LD, args.RD, args.GC, args.IT, args.Energy, args.AFAB, args.WD, args.CL, args.FS, args.Date]
 
-    print args.SA
+    #print args.SA
     if args.SA == 'SA':
         Labels_Path = '{!s}/Labels[{:%Y-%m-%d_%H%M%S}]'.format(args.Working_Dir, DT.datetime.now())
     else:
-        Labels_Path = '{!s}/Labels'.format(args.Working_Dir)
+        Labels_Path = '{!s}/Labels[{:%Y-%m-%d_%H%M}]'.format(args.Working_Dir, DT.datetime.now())
     #print Labels_Path
 
 
     #Copy Label Template
-    CopyFilesComplete.copyanything('c:\Users\Scott\Dropbox\Scripts\SVG\Arc Flash Label\Labels', Labels_Path)
+    CopyFilesComplete.copyanything('d:\svermeire\Dropbox\Dropbox\Scripts\SVG\Arc Flash Label\Labels', Labels_Path)
     os.chdir(Labels_Path)
 
     FileToSearch = 'AF Label.svg'
