@@ -24,14 +24,15 @@ def main():
     parser.add_argument('WD', help='working distance analysis was performed on')
     parser.add_argument('CL', help='Clothing Level Reqirement')
     parser.add_argument('FS', help='Face Shield Requirement')
+    parser.add_argument('SH', help='Suit Hood Requirement')
     parser.add_argument('Date', help='Analysis Date')
     parser.add_argument('Working_Dir', help='working directory')
     parser.add_argument('SA', nargs='?', default='OFF', help='Enable standalone mode')
 
     args = parser.parse_args()
 
-    Field_List = ['$Threat', '$EquipName', '$Voltage', '$LD', '$RD', '$GC', '$IT', '$Energy', '$AFAB', '$WD', '$CL', '$FS', '$Date']
-    Field_Values = [args.Threat, args.EquipName, args.Voltage, args.LD, args.RD, args.GC, args.IT, args.Energy, args.AFAB, args.WD, args.CL, args.FS, args.Date]
+    Field_List = ['$Threat', '$EquipName', '$Voltage', '$LD', '$RD', '$GC', '$IT', '$Energy', '$AFAB', '$WD', '$CL', '$FS', '$SH', '$Date']
+    Field_Values = [args.Threat, args.EquipName, args.Voltage, args.LD, args.RD, args.GC, args.IT, args.Energy, args.AFAB, args.WD, args.CL, args.FS, args.SH, args.Date]
 
     #print args.SA
     if args.SA == 'SA':
