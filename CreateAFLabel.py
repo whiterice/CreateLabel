@@ -39,12 +39,14 @@ def main():
     if args.SA == 'SA':
         Labels_Path = '{!s}/Labels[{:%Y-%m-%d_%H%M%S}]'.format(args.Working_Dir, DT.datetime.now())
     else:
-        Labels_Path = '{!s}/Labels[{:%Y-%m-%d_%H%M}]'.format(args.Working_Dir, DT.datetime.now())
+        Labels_Path = '{!s}/Labels'.format(args.Working_Dir)
+        #Labels_Path = '{!s}/Labels[{:%Y-%m-%d_%H%M}]'.format(args.Working_Dir, DT.datetime.now())
     #print Labels_Path
 
 
     #Copy Label Template
-    CopyFilesComplete.copyanything('d:\svermeire\Dropbox\Dropbox\Scripts\SVG\Arc Flash Label\Labels', Labels_Path)
+    CopyFilesComplete.copyanything('z:\Source-Code\ArcFlash\AF-Report-full\SVG\Arc Flash Label\Labels', Labels_Path)
+    #CopyFilesComplete.copyanything('z:\Source-Code\ArcFlash\AF-Report-full\SVG\Arc Flash Label\Printer Settings.drs', Labels_Path)
     os.chdir(Labels_Path)
 
     FileToSearch = 'AF Label.svg'
