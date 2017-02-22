@@ -6,6 +6,7 @@ import argparse
 import CopyFilesComplete
 import fileinput
 import subprocess
+import RenameFile
 from collections import namedtuple
 
 def main():
@@ -60,12 +61,31 @@ def main():
         TempFile.close()
         i = i + 1
 
-    File_Name = 'AF Label - Class {!s} - {!s}V - {!s}.svg'.format(args.CL, args.Voltage, args.EquipName)
+
+
+    File_Name = 'AF_Label-Class{!s}-{!s}kV-{!s}.svg'.format(args.CL, args.Voltage, args.EquipName)
+    File_Name_Strip = 'AF_Label-Class{!s}-{!s}kV-{!s}.svg'.format(args.CL, args.Voltage, args.EquipName)
+    PDF_Name = '--export-pdf=AF_Label-Class{!s}-{!s}kV-{!s}.pdf'.format(args.CL, args.Voltage, args.EquipName)
+
+    print '\n', File_Name, PDF_Name, '\n'
 
     os.chdir(Labels_Path)
-    os.rename('AF Label.svg', File_Name)
-    #subprocess.call(["inkscape AF\ Label.svg --export-pdf=new.pdf"])
+    RenameFile.RenameMe(Labels_Path, 'AF Label.svg', File_Name)
+    subprocess.call(['inkscape', File_Name, PDF_Name])
 
+##    #PDF_Call = 'inkscape AF\ Label\ -\ Class\ {!s}\ -\ {!s}V\ -\ {!s}.svg --export-pdf=AF\ Label\ -\ Class\ {!s}\ -\ {!s}V\ -\ {!s}.pdf'.format(args.CL, args.Voltage, args.EquipName, args.CL, args.Voltage, args.EquipName)
+##    PDF_Call = 'inkscape {!s} --export-pdf=new.pdf'.format(File_Name)
+##    PDF_name = 'AF Label - Class {!s} - {!s}V - {!s}.pdf'.format(args.CL, args.Voltage, args.EquipName)
+##    
+##    subprocess.call([PDF_Call])
+##
+##    Dir = os.getcwd()
+##
+##    i=0
+##    while(i < 1):
+##        for file in os.listdir(Dir):
+##            if file == PDF_name:
+##                i = i + 1
 
 if __name__ == '__main__':
     main()
